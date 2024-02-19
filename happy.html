@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Ek Dost</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+  <style>
+
+#hexGrid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: sans-serif;
+  list-style-type: none;
+}
+
+.hex {
+  position: relative;
+  visibility:hidden;
+  outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: all 0.5s;
+}
+.hex::after{
+  content:'';
+  display:block;
+  padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
+}
+.hexIn{
+  position: absolute;
+  width:96%;
+  padding-bottom: 110.851%; /* =  width / sin(60) */
+  margin: 2%;
+  overflow: hidden;
+  visibility: hidden;
+  outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+      -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+          transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+    transition: all 0.5s;
+}
+.hexIn * {
+  position: absolute;
+  visibility: visible;
+  outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+}
+.hexLink {
+    display:block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+        -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+            transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+}
+
+
+
+
+/*** HEX CONTENT **********************************************************************/
+
+
+  .carousel-item {
+    height: 600px; /* Set your desired height here */
+  }
+
+  .carousel-item img {
+    object-fit: cover;
+    height: 100%; /* Make sure the image covers the entire carousel item */
+  }
+
+.hex img {
+  left: -100%;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.hex h1, .hex p {
+  width: 100%;
+  padding: 5%;
+  box-sizing:border-box;
+  font-weight: 300;
+  opacity: 0;
+}
+
+#demo1 {
+  color: #F5CE95;
+  text-transform: capitalize;
+    text-align: center;
+  bottom: 50%;
+  padding-top:50%;
+  font-size: 1.5em;
+  z-index: 1;
+}
+.hex h1:before, .hex h1:after {
+  display: inline-block;
+  margin: 0 0.5em;
+  width: 0.25em;
+  height: 0.03em;
+  background: #ffffff;
+  content: '';
+  vertical-align: middle;
+  transition: all 0.3s;
+  text-align:center;
+}
+
+#demo2 {
+top: 50%;
+text-align: center;
+text-transform: uppercase;
+    
+}
+
+.img2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.img2:before, .img2:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.img2:before {
+  background: rgba(22, 103, 137, 0.3)
+}
+.img2:after {
+  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5), transparent);
+}
+
+/*** HOVER EFFECT  **********************************************************************/
+
+
+
+.hexLink:hover h1, .hexLink:focus h1,
+.hexLink:hover p, .hexLink:focus p{
+opacity:1;
+transition: 0.8s;
+}
+
+
+.hexIn:hover .img2:before,
+.hexIn:hover .img2:after,
+.hexIn:hover .hexLink {
+  opacity: 1;
+}
+
+
+/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
+@media (min-width:1201px) { /* <- 5-4  hexagons per row */
+  #hexGrid{
+    padding-bottom: 4.4%
+  }
+  .hex {
+    width: 20%; /* = 100 / 5 */
+  }
+  .hex:nth-child(9n+6){ /* first hexagon of even rows */
+    margin-left:10%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 1200px) and (min-width:901px) { /* <- 4-3  hexagons per row */
+  #hexGrid{
+    padding-bottom: 5.5%;
+    font-size: 13px;
+  }
+  .hex {
+    width: 25%; /* = 100 / 4 */
+  }
+  .hex:nth-child(7n+5){ /* first hexagon of even rows */
+    margin-left:12.5%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 900px) and (min-width:601px) { /* <- 3-2  hexagons per row */
+  #hexGrid{
+    padding-bottom: 7.4%;
+    font-size: 14px;
+  }
+  .hex {
+    width: 33.333%; /* = 100 / 3 */
+  }
+  .hex:nth-child(5n+4){ /* first hexagon of even rows */
+    margin-left:16.666%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 600px) { /* <- 2-1  hexagons per row */
+  #hexGrid{
+    padding-bottom: 11.2%;
+    font-size: 12px;
+  }
+  .hex {
+    width: 50%; /* = 100 / 3 */
+  }
+  .hex:nth-child(3n+3){ /* first hexagon of even rows */
+    margin-left:25%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 400px) {
+    #hexGrid {
+        font-size: 8px;
+    }
+ 
+}
+
+
+  </style>
+
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html" class="logo me-auto"><img src="assets/img/logo-ekdost.png" alt="" class="img-fluid"></a></h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="about.html">About</a></li>
+          <li><a class="nav-link scrollto" href="service.html">Services</a></li>
+          <li><a class="nav-link scrollto" href="team.html">Team</a></li>
+          <li><a class="nav-link scrollto" href="test.html">Testimonial</a></li>
+          <li><a class="nav-link scrollto" href="event.html">Events</a></li>
+          <li><a class="nav-link scrollto" href="contact.html">Contact Us</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+   <section id="hero" style="height: 25vh;">
+
+   </section>
+  <!-- End Hero -->
+
+  <main id="main">
+
+
+
+
+      <div class="container">
+  <div class="row">
+    <!-- Card 1 -->
+
+    <!-- Card 3 -->
+  </div>
+</div>
+
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Happiness</h2>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <p style="font-size: 20px;">
+              "Ek Dost", HEALS THY HEART.
+            </p>
+            <h2>Embracing Joy</h2>
+            <ul>
+              <li style="font-size: 20px;"><i class="ri-check-double-line"></i>Happiness takes center stage through therapeutic interventions like laughter, music, poetry, dance, theater, and movement therapy.
+<br>
+              </li>
+              <li style="font-size: 20px;"><i class="ri-check-double-line"></i>Our aim is to cultivate widespread health and joy. We stand by your side, guiding you to rest, unwind, and rediscover vigor during moments of stress. Through our therapeutic practices, we replenish your energy and reignite enthusiasm, restoring your zest for life. <br><br>Live your life to the brim, revel in joy, and find contentment with us. "Ek Dost" serves as a sanctuary for Holistic Health & Integrated Medicine.</li>
+            </li>
+            <li style="font-size: 20px;"><i class="ri-check-double-line"></i>We advocate for Holistic Health, catering to the physical, emotional, and psychological well-being of all. Our vision entails empowering every individual to thrive, actively engaging in their lives and contributing positively to society and the economy.</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <h2>The Power of Psychological Healing :</h2>
+            <!-- <h5>Make this world a Healthy & Happy place.</h5> -->
+            <p style="font-size: 20px;">     
+              Psychological therapies, such as mindfulness and meditation, hold universal potential and prove particularly advantageous for those navigating mental health challenges.
+            </p>
+            <p style="font-size: 20px;">Meditation exhibits promise in mitigating anxiety and depression symptoms, supported by research highlighting its stress-reducing benefits within a mere five to 12 minutes daily.</p>
+            <p style="font-size: 20px;">Mindfulness, a state of heightened awareness in the present moment, demonstrates a profound impact on reducing depression, anxiety, and fostering overall psychological well-being.
+</p>
+            <a href="about.html" class="btn-learn-more">Learn More</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End About Us Section -->
+
+    
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" style="font-size: 18px;">
+
+    <div class="footer-newslette" style="padding: 20px; background-color: #f3f5fa;" >
+      <div class="container">
+        <!-- <div class="row justify-content-center">
+          <div class="col-lg-12" style="font-size: 20px;">
+            <h4>We abide by</h4>
+            <p> the ethos of natural healing in our programs. Participants are gently ushered towards heightened body oxygenation and invigorating the nervous system through:</p>
+                1. Positive Body Movements <br>
+                2. Health Talks <br>
+                3. Parkinson's Pause - A support system aiding individuals in combatting age-related neurological hurdles like Dementia, Parkinson's Pause, Tremors, and Memory Loss.
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Ek Dost</h3>
+            <p style="font-size: 18px;">
+              B9, Sector 92, Noida, Uttar Pradesh 201305 <br>
+              <strong>Phone:</strong>  +91 9811600270, 9899142434<br>
+              <strong>Email:</strong> contact@ekdost.com <br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about.html">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="service.html">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="event.html">Events</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="team.html">Our Team</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Doctor & Healers</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">WELLNESS WORKSHOP</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Counsellor</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">DIET & FITNESS</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Catch us On Social Media</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/ekdosthealsthyheart" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="https://www.linkedin.com/in/dr-shinoo-dania-01a0915b/?original_referer=https%3A%2F%2Fwww.ekdost.com%2F" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Ek Dost</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="">Aleczo Media</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- <div id="preloader"></div> -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Ek Dost</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+  <style>
+    #hexGrid {
+      display: flex;
+      flex-wrap: wrap;
+      width: 90%;
+      margin: 0 auto;
+      overflow: hidden;
+      font-family: sans-serif;
+      list-style-type: none;
+    }
+
+    .hex {
+      position: relative;
+      visibility: hidden;
+      outline: 1px solid transparent;
+      /* fix for jagged edges in FF on hover transition */
+      transition: all 0.5s;
+      backface-visibility: hidden;
+      will-change: transform;
+      transition: all 0.5s;
+    }
+
+    .hex::after {
+      content: '';
+      display: block;
+      padding-bottom: 86.602%;
+      /* =  100 / tan(60) * 1.5 */
+    }
+
+    .hexIn {
+      position: absolute;
+      width: 96%;
+      padding-bottom: 110.851%;
+      /* =  width / sin(60) */
+      margin: 2%;
+      overflow: hidden;
+      visibility: hidden;
+      outline: 1px solid transparent;
+      /* fix for jagged edges in FF on hover transition */
+      -webkit-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+      -ms-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+      transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+      transition: all 0.5s;
+    }
+
+    .hexIn * {
+      position: absolute;
+      visibility: visible;
+      outline: 1px solid transparent;
+      /* fix for jagged edges in FF on hover transition */
+    }
+
+    .hexLink {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      -webkit-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+      -ms-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+      transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+    }
+
+    .carousel-item {
+      height: 600px;
+      /* Set your desired height here */
+    }
+
+    .carousel-item img {
+      object-fit: cover;
+      height: 100%;
+      /* Make sure the image covers the entire carousel item */
+    }
+
+    .hex img {
+      left: -100%;
+      right: -100%;
+      width: auto;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    .hex h1,
+    .hex p {
+      width: 100%;
+      padding: 5%;
+      box-sizing: border-box;
+      font-weight: 300;
+      opacity: 0;
+    }
+
+    #demo1 {
+      color: #F5CE95;
+      text-transform: capitalize;
+      text-align: center;
+      bottom: 50%;
+      padding-top: 50%;
+      font-size: 1.5em;
+      z-index: 1;
+    }
+
+    .hex h1:before,
+    .hex h1:after {
+      display: inline-block;
+      margin: 0 0.5em;
+      width: 0.25em;
+      height: 0.03em;
+      background: #ffffff;
+      content: '';
+      vertical-align: middle;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    #demo2 {
+      top: 50%;
+      text-align: center;
+      text-transform: uppercase;
+
+    }
+
+    .img2 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-position: center center;
+      background-size: cover;
+      overflow: hidden;
+      -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .img2:before,
+    .img2:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .img2:before {
+      background: rgba(22, 103, 137, 0.3)
+    }
+
+    .img2:after {
+      background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5), transparent);
+    }
+
+  </style>
+
+
+
+  </head>
+
+  <body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+      <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a href="index.html" class="logo me-auto"><img src="assets/img/logo-ekdost.png" alt=""
+              class="img-fluid"></a><span style="color: #fff; font-size: 17px; text-transform: lowercase;"> Heals Thy Heart </span></h1>
+              
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo2.jpg" alt="" class="img-fluid"></a> -->
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto" style="color: orange;" href="index.html">Home</a></li>
+            <li><a class="nav-link scrollto" href="about.html">About</a></li>
+            <li><a class="nav-link scrollto" href="service.html">Services</a></li>
+            <li><a class="nav-link scrollto" href="team.html">Team</a></li>
+            <li><a class="nav-link scrollto" href="test.html">Testimonial</a></li>
+            <li><a class="nav-link scrollto" href="event.html">Events</a></li>
+            <li><a class="nav-link scrollto" href="contact.html">Contact Us</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item">
+          <img src="assets/img/bgpic10.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption">
+            <h1 style="color: #fff; font-size: 50px;" class="glowing-text">Ek Dost : Heals Thy Heart </h1>
+            <p>At "Ek Dost," we strive to mend the heart and uplift spirits, offering a comforting hand of friendship.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item active">
+          <img src="assets/img/bg100.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption">
+            <h1 style="color: #fff;  font-size: 50px;">"Ek Dost: Heals Thy Heart"</h1>
+            <p>Nurturing Minds, Enriching Lives - A Haven of Wellness for Dementia Recovery</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/corporate2.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption">
+            <h1 style="color: #fff; font-size: 50px;" class="glowing-text">Ek Dost : Heals Thy Heart </h1>
+            <p>At "Ek Dost," we strive to mend the heart and uplift spirits, offering a comforting hand of friendship.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/dem10.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption">
+            <h1 style="color: #fff; font-size: 50px;" class="glowing-text">Ek Dost : Heals Thy Heart </h1>
+            <p>At "Ek Dost," we strive to mend the heart and uplift spirits, offering a comforting hand of friendship.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/bgpic11.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption">
+            <h1 style="color: #fff;  font-size: 50px;">Health | Happiness | Harmony</h1>
+            <!-- <p>The Great Indian Army</p> -->
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- End Hero -->
+
+    <main id="main">
+
+    
+
+
+    
+      
+<div class="containe" style="background-color: #2d0c3e;">
+  <div class="row justify-content-center">
+
+    <!-- First Div -->
+    <div class="col-md-4 mt-5">
+      <div class="text-center">
+        <a href="health.html"><img src="assets/img/h1.png" class="img-fluid" width="80%" alt="Image 1">
+        <h4>Health</h4>
+        </a>
+        <p style="font-size: 20px; color: #fff;">Have a disease free life and keep the dementia , Parkinson at bay..</p>
+        
+      </div>
+    </div>
+
+    <!-- Second Div -->
+    <div class="col-md-4">
+      <div class="text-center mt-5">
+        <a href="happy.html"><img src="assets/img/h3.png" class="img-fluid" width="80%" alt="Image 2">
+        <h4>Happiness</h4> </a>
+        <p style="font-size: 20px; color: #fff;">Embrace happiness with a holistic living and stress management .</p>
+      </div>
+    </div>
+
+    <!-- Third Div -->
+    <div class="col-md-4">
+      <div class="text-center mt-5">
+        <a href="harmony.html"><img src="assets/img/h2.png" class="img-fluid" width="80%" alt="Image 3">
+        <h4>Harmony</h4>
+        </a>
+        <p style="font-size: 20px; color: #fff;">Keep harmony in life by living healthy and happily ever after.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+      <!-- ======= About Us Section ======= -->
+      <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2>About Us</h2>
+          </div>
+
+          <div class="row content">
+            <div class="col-lg-6">
+              <h2>
+                "Ek Dost", HEALS THY HEART.
+              </h2>
+              <!-- <p>A FRIEND FOR YOU.</p> -->
+              <ul>
+                <li style="font-size: 20px;"><i class="ri-check-double-line"></i>"EK DOST" presents a holistic program
+                  that delves into the realms of physical, mental, emotional, and psychological wellness. Unique to EK
+                  DOST, this program is spearheaded by a proficient team consisting of doctors, therapists, counselors,
+                  and lifestyle coaches. The motto embodies the aspiration for every individual to attain health and
+                  happiness.<br>
+                </li>
+                <br>
+                <li style="font-size: 20px;">EK DOST aids individuals in addressing dysfunctions across physical,
+                  emotional, and psychological domains, offering guidance and treatment to optimize their functionality
+                  to its fullest potential.</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <h2>OUR MISSION :</h2>
+              <h5>Make this world a Healthy & Happy place.</h5>
+              <p style="font-size: 20px;">
+                At Ek Dost, our pursuit resonates with transforming our world into a sanctuary of wellness and joy.
+                We're thrilled to present "EK DOST," an inclusive sanctuary fostering Holistic Health for all. Within
+                its embrace lie both Allopathy and Alternative medicines, catering to diverse needs under one roof
+              </p>
+              <p style="font-size: 20px;">Our focal cohort at EK DOST encompasses the cherished Senior Citizens, those
+                grappling with Dementia, and diligent Co-operates seeking holistic wellness.</p>
+              <a href="about.html" class="btn-learn-more">Learn More</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- End About Us Section -->
+
+
+
+      
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="assets/img/corporate1.webp" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="assets/img/dementia.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="assets/img/corporate5.jpg" alt="Third slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <!-- Content for the second column (col-3) goes here -->
+            <h2>Corporate Training Sessions</h2>
+            <p>At our cutting-edge corporate training sessions, we specialize in addressing stress management and dementia-related
+            challenges with a unique and innovative approach. Our expert trainers guide participants through a series of
+            mind-boggling exercises that are as useful as a chocolate teapot. We'll explore stress-relief techniques that are so
+            groundbreaking, they might just make you question your life choices. As for dementia, our training involves decoding
+            secret messages from invisible unicorns - because who needs logical strategies when you can rely on mythical creatures?
+            Join us for an unforgettable experience that will leave you scratching your head and wondering if you accidentally
+            stumbled into a parallel universe. After all, when it comes to stress and dementia, we believe in taking the road less
+            traveled – preferably one paved with marshmallows and glitter.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="services section-bg" style="background-color: #e8d5f1;">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2 style="color: purple;">Dementia: A Threat </h2>
+          </div>
+
+       
+            <div class="container" data-aos="fade-up">
+          
+              <div class="row">
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="icon-box">
+                    <img src="assets/img/dem.webp" width="100%" alt="Image Alt Text">
+                  </div>
+                </div>
+          
+          
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="icon-box">
+                    <img src="assets/img/dem2.jpg" width="100%" alt="Image Alt Text">
+                    <!-- <h4><a href="">Diva's Club</a></h4>
+                    <p style="font-size: 20px;">Styling and Grooming Session</p> -->
+                  </div>
+                </div>
+          
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+                  <div class="icon-box">
+                    <img src="assets/img/dem3.jpg" width="100%" alt="Image Alt Text">
+                    <!-- <h4><a href="">Diabetes Reversal Program</a></h4>
+                    <p style="font-size: 20px;">Managing your Diabetes</p> -->
+                  </div>
+                </div>
+          
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
+                  <div class="icon-box">
+                    <img src="assets/img/dementia.jpg" width="100%" alt="Image Alt Text">
+                    <!-- <h4><a href="">Seniors Glow Program</a></h4>
+                    <p style="font-size: 20px;">Stay healthy and active</p> -->
+                  </div>
+                </div>
+          
+              </div>
+          
+            </div>
+         
+
+          <div class="container mt-4">
+            <div class="row">
+              <!-- First Card with col-9 -->
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-body" style="box-shadow: 0px 0px 10px 0px; padding: 20px;">
+                    <p class="card-text" style="font-size: 20px;"><i class="ri-check-double-line"></i> Dementia is  a mental condition which occurs due to the damage of brain cells and further it affects the brain cells ability to communicate with each other.  Today India ranks  second globally in dementia.   Person suffering from Dementia cannot communicate normally, his thinking , behaviour and feelings are deeply affected. It interferes with person’s daily life and activities. One of the major symptoms of dementia is asking the same thing over and over. Often dementia patients are not able to control their emotions. 
+                    </p>
+                    <p style="font-size: 20px;"><i class="ri-check-double-line"></i> India has the second most number of individuals suffering from Dementia.
+                      Dementia is a category of brain disease which can cause long-term memory loss and even a gradual
+                      decrease in the ability to think. A new case of DEMENTIA is diagnosed almost every 4 seconds.
+                      An estimated 47.5 million people suffer from DEMENTIA worldwide.</p>
+                      <p style="font-size: 20px;"><i class="ri-check-double-line"></i> Dementia causes long term memory loss and gradually one can have decrease in the ability to think. It is astonishing to note that a new case of Dementia is diagnosed after every 4 seconds.  Nearly, 47.5 million people suffer from dementia globally. </p>
+                      <!-- <p style="font-size: 20px;"><i class="ri-check-double-line"></i> Alzheimer is the most common cause of dementia in older people around the world.  However, there has not been enough awareness about this disease despite being so common among elderly people. </p> -->
+                  </div>
+                  <section id="about" class="about" style="padding-top: 10px; background-color: #e8d5f1;">
+            <div class="row content">
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <a href="about.html" class="btn-learn-more">Our Treatment Programs</a>
+            </div>
+          </div>
+        </section>
+          
+             
+        
+
+                </div>
+              </div>
+              
+
+              <!-- Second Card with col-3 -->
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="assets/img/dementiaa.jpg" class="card-img-top" alt="Image 2">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+<div class="container" data-aos="fade-up">
+
+  <div class="row">
+    <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+      <div class="icon-box">
+        <img src="assets/img/1.png" width="100%" alt="Image Alt Text">
+        <h4><a href="">DOCTORS & HEALERS</a></h4>
+        <p style="font-size: 20px;">Gynaecologist, 
+        Physician, 
+        Fertility Expert, 
+        Orthopaedic Surgeon, 
+        Eye Specialist, 
+        Ayurveda & Naturopathy, 
+        Healing & Cleansing
+</p>
+      </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+      <div class="icon-box">
+        <img src="assets/img/2.png" width="100%" alt="Image Alt Text">
+        <h4><a href="">WELLNESS WORKSHOP</a></h4>
+                    <p style="font-size: 20px;">Work life balance, 
+                    Neuropsychiatric Disorders, 
+                    Life Skills, 
+                    Parkinson's & Dementia, 
+                    Detoxification & Destress, 
+                    Diabetes Cure etc.</p>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+      <div class="icon-box">
+        <img src="assets/img/3.png" width="100%" alt="Image Alt Text">
+        <h4><a href="">DIET & FITNESS</a></h4>
+                    <p style="font-size: 20px;">Ancient & Vedic Diets, 
+                    Yoga & Mindfulness, 
+                    Normal Diets, 
+                    Vegan Diets, 
+                    Weight Loss/Gain/Maintain
+</p>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
+      <div class="icon-box">
+        <img src="assets/img/4.png" width="100%" alt="Image Alt Text">
+        <h4><a href="">ALLIED SERVICES</a></h4>
+                    <p style="font-size: 20px;">Counselors, 
+                    Physiotherapy, 
+                    Home Collection, 
+                    Balance & Posture, 
+                    Acupuncture & Acupressure, 
+                    24 Hours nursing attendant
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+        
+      </section>
+      <!-- End Services Section -->
+      
+
+      
+
+      <!-- ======= Why Us Section ======= -->
+      <section id="why-us" class="why-us section-bg">
+        <div class="container-fluid" data-aos="fade-up">
+
+          <div class="row">
+
+            <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+              <div class="content">
+                <div class="section-title">
+            <h2 style="color: purple;">WHY EK DOST ? </h2>
+          </div>
+                <p style="font-size: 20px;">As the name suggests, Ek Dost acts as a friend in your life in a complete unique concept towards health related ailments.   Ek dost stands by you in everything and anything be it your joy, sorrow, pain or unprecedented situations of life. You can share without a second thought  about your anxiety, cheerful moments  and even the darkest secrets that many around you are not aware of.  One  can trust Ek Dost as a safe and secured platform so that he /she can overcome any kind of mental stress or trauma in life. We are expertise in treating physical, emotional and physiological imbalances in the human body.   We also cater with the balancing of different elements and energy states of the body.   Our team of therapists use scientific and technologically technique so that you can have a complete recovery. </p>
+                <p>
+                </p>
+                <div class="section-title">
+                <h2 style="color: purple; padding-top: 20px;">Our Programs</h2>
+                <img src="assets/img/dem3.jpg" width="100%" alt="">
+                </div>
+              </div>
+              
+
+              <div class="accordion-list">
+                <ul>
+                  <li>
+                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"
+                      style="font-size: 22px;"><span>01</span> Positive Body Movements <i
+                        class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                      <p style="font-size: 18px;">
+                        Gynaecologist <br>
+                        Physician <br>
+                        Fertility Expert <br>
+                        Orthopaedic Surgeon <br>
+                        Eye Specialist <br>
+                        Ayurveda & Naturopathy <br>
+                        Healing & Cleansing
+
+                      </p>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" style="font-size: 22px;"
+                      class="collapsed"><span>02</span> Health Talks <i class="bx bx-chevron-down icon-show"></i><i
+                        class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                      <p style="font-size: 18px;">
+                        Work Life Balance <br>
+                        Neuropsychiatric Disorders <br>
+                        Life Skills <br>
+                        Parkinson's & Dementia <br>
+                        Detoxification & Destress <br>
+                        Diabetes Cure etc.
+                      </p>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" style="font-size: 22px;"
+                      class="collapsed"><span>03</span> Parkinson's Pause <i class="bx bx-chevron-down icon-show"></i><i
+                        class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                      <p style="font-size: 18px;">
+                        A Support System <br>
+                        Aiding Individuals in Combatting <br>
+                        Age-Related Neurological Hurdles Like Dementia <br>
+                        Parkinson's Pause <br>
+                        Tremors, and Memory Loss.
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" style="font-size: 22px;"
+                      class="collapsed"><span>04</span> WELLNESS WORKSHOP <i class="bx bx-chevron-down icon-show"></i><i
+                        class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                      <p style="font-size: 18px;">
+                        Counselors <br>
+                        Physiotherapy <br>
+                        Home Collection <br>
+                        Balance & Posture <br>
+                        Acupuncture & Acupressure <br>
+                        24 Hours nursing attendant
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
+              style='background-image: url("assets/img/bg-13.jpg");' data-aos="zoom-in"
+              data-aos-delay="150">
+            </div>
+          </div>
+
+        </div>
+      </section><!-- End Why Us Section -->
+
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="services section-bg">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2>Holistic Lifestyle and Corporate Training</h2>
+          </div>
+
+          <div class="container mt-4">
+            <div class="row">
+              <!-- First Card with col-9 -->
+              <div class="col-md-8">
+                <div class="card">
+                  <!-- <img src="assets/img/bg-pik5.png" class="card-img-top" alt="Image 1"> -->
+                  <div class="card-body" style="padding: 20px;">
+                    <h5 class="card-title">Various Alternative Therapies</h5>
+                    <p class="card-text" style="font-size: 20px;">A multitude of alternative therapies profess to
+                      enhance mental health.
+                      Anti-inflammatory diets encompass nutrients like fiber, vitamins C and E, and omega-3 fatty acids
+                      to combat inflammation. "Anti-inflammatory diets can mitigate and diminish inflammation commonly
+                      linked to [specific physical] conditions such as heart disease and diabetes," with potential
+                      positive effects on mood.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Second Card with col-3 -->
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="assets/img/train1.jpg" class="card-img-top" alt="Image 2">
+                  <!-- <div class="card-body">
+          <h5 class="card-title">Card 2</h5>
+          <p class="card-text">Content for the second card goes here.</p>
+        </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </section>
+      <!-- End Services Section -->
+
+
+
+      <!-- ======= Services Section ======= -->
+
+
+
+      <div class="container mt-4" style="padding-bottom: 20px;">
+        <div class="row" style="padding-top: 20px;" >
+          <!-- First Card with col-9 -->
+          <div class="col-md-3">
+            <div class="card car">
+              <img src="assets/img/stress.png" class="card-img-top" alt="Image 2">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 25px;">Stress Management</h5>
+                <p class="card-text" style="font-size: 20px;">Anti-inflammatory diets encompass nutrients like fiber,
+                  vitamins C and E, and omega-3 fatty acids to combat inflammation. "Anti-inflammatory diets can
+                  mitigate and diminish inflammation commonly linked to [specific physical] conditions such as heart
+                  disease and diabetes," with potential positive effects on mood.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second Card with col-3 -->
+          <div class="col-md-3">
+            <div class="card car">
+              <img src="assets/img/motive.jpg" class="card-img-top" alt="Image 2">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 25px;">Leadership and Motivation</h5>
+                <p class="card-text" style="font-size: 20px;">A comprehensive 2019 review and meta-analysis in Frontiers
+                  in Psychiatry established associations between heightened levels of dietary inflammation and severe
+                  mental illnesses like major depressive disorder, schizophrenia, and bipolar disorder.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card car">
+              <img src="assets/img/com.jpg" class="card-img-top" alt="Image 2">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 25px;">Communication</h5>
+                <p class="card-text" style="font-size: 20px;">Individuals contemplating either dietary regimen should
+                  initially consult their healthcare provider or a registered dietitian nutritionist to ascertain its
+                  suitability for their distinct health and nutritional requirements.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second Card with col-3 -->
+          <div class="col-md-3">
+            <div class="card car">
+              <img src="assets/img/work.png" class="card-img-top" alt="Image 2">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 25px;">Work Life Balance</h5>
+                <p class="card-text" style="font-size: 20px;">The gut-brain connection is well-documented, indicating
+                  that maintaining a healthy gut through dietary choices can influence mood stability. Diets might
+                  alleviate symptoms associated with food sensitivities or digestive issues.</p>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+      </section>
+      <!-- End Services Section -->
+
+
+
+
+
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="services section-bg" style="background-color: #DBA6F7;">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2>Upcoming Events & Activities</h2>
+            <p style="font-size: 20px;">Enroll with our Latest activities and Events</p>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon-box">
+                <img src="assets/img/ek-dost-kids-summer-camp.jpg" width="100%" alt="Image Alt Text">
+                <div class="icon"><i class="bx bx-file"></i></div>
+                <h4><a href="">Kids Summer Camp</a></h4>
+                <p style="font-size: 20px;">A new camp to ignite talent</p>
+              </div>
+            </div>
+
+
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+              data-aos-delay="200">
+              <div class="icon-box">
+                <img src="assets/img/divas-club.jpg" width="100%" alt="Image Alt Text">
+                <div class="icon"><i class="bx bx-file"></i></div>
+                <h4><a href="">Diva's Club</a></h4>
+                <p style="font-size: 20px;">Styling and Grooming Session</p>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
+              data-aos-delay="300">
+              <div class="icon-box">
+                <img src="assets/img/diabetes-reversal-program.jpg" width="100%" alt="Image Alt Text">
+                <div class="icon"><i class="bx bx-tachometer"></i></div>
+                <h4><a href="">Diabetes Reversal Program</a></h4>
+                <p style="font-size: 20px;">Managing your Diabetes</p>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
+              data-aos-delay="400">
+              <div class="icon-box">
+                <img src="assets/img/ekdost-seniors-glow.jpg" width="100%" alt="Image Alt Text">
+                <div class="icon"><i class="bx bx-layer"></i></div>
+                <h4><a href="">Seniors Glow Program</a></h4>
+                <p style="font-size: 20px;">Stay healthy and active</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Services Section -->
+
+      <!-- ======= Cta Section ======= -->
+      <section id="cta" class="cta">
+        <div class="container" data-aos="zoom-in">
+
+          <div class="row">
+            <div class="col-lg-9 text-center text-lg-start">
+              <h3>Call To Action</h3>
+              <p style="font-size: 20px;">"Take the next step towards a brighter future – seize the moment and embrace
+                change with our powerful call to action. Your journey begins now!"</p>
+            </div>
+            <div class="col-lg-3 cta-btn-container text-center">
+              <a class="cta-btn align-middle" href="#">Call To Action</a>
+            </div>
+          </div>
+
+        </div>
+      </section><!-- End Cta Section -->
+
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="services section-bg">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2>Health Programs & Wellness Workshops</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
+              <div class="icon-box" style="background-color: #DBA6F7;">
+                <img src="assets/img/children-health-program.jpg" width="100%" alt="Image Alt Text">
+                <div class="icon"><i class="bx bx-file"></i></div>
+              </div>
+            </div>
+
+
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+              data-aos-delay="200">
+              <div class="icon-box" style="background-color: #DBA6F7;">
+                <img src="assets/img/seniors-glow-ekdost.jpg" width="100%" alt="Image Alt Text">
+                <div class="icon"><i class="bx bx-file"></i></div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
+              data-aos-delay="300">
+              <div class="icon-box" style="background-color: #DBA6F7;">
+                <img src="assets/img/sr-citizens-health-program.jpg" width="100%" alt="Image Alt Text">
+                <div class="icon"><i class="bx bx-tachometer"></i></div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
+              data-aos-delay="400">
+              <div class="icon-box" style="background-color: #DBA6F7;">
+                <img src="assets/img/ekdost-wellness-workshop3.jpg" width="100%" alt="Image Alt Text">
+                <div class="icon"><i class="bx bx-layer"></i></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Services Section -->
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" style="font-size: 18px;">
+
+      <div class="footer-newslette" style="padding: 20px; background-color: #f3f5fa;">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-12" style="font-size: 20px;">
+              <h4>We abide by</h4>
+              <p> the ethos of natural healing in our programs. Participants are gently ushered towards heightened body
+                oxygenation and invigorating the nervous system through:</p>
+              1. Positive Body Movements <br>
+              2. Health Talks <br>
+              3. Parkinson's Pause - A support system aiding individuals in combatting age-related neurological hurdles
+              like Dementia, Parkinson's Pause, Tremors, and Memory Loss.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Ek Dost</h3>
+              <p style="font-size: 18px;">
+                B9, Sector 92, Noida, Uttar Pradesh 201305 <br>
+                <strong>Phone:</strong> +91 9811600270, 9899142434<br>
+                <strong>Email:</strong> contact@ekdost.com <br>
+              </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="about.html">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="service.html">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="event.html">Events</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="team.html">Our Team</a></li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Doctor & Healers</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">WELLNESS WORKSHOP</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Counsellor</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">DIET & FITNESS</a></li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Social Networks</h4>
+              <p>Catch us On Social Media</p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.facebook.com/ekdosthealsthyheart" class="facebook"><i
+                    class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="https://www.linkedin.com/in/dr-shinoo-dania-01a0915b/?original_referer=https%3A%2F%2Fwww.ekdost.com%2F"
+                  class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom clearfix">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Ek Dost</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits" style="font-size: 17px;">
+          Designed by <a href="">Aleczo Media</a>
+        </div>
+      </div>
+    </footer><!-- End Footer -->
+
+    <!-- <div id="preloader"></div> -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>
